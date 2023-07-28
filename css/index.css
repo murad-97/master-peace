@@ -451,7 +451,7 @@ button {
 .about_section {
   width: 100%;
   float: left;
-  background-color: #e4e4e4;
+  background-color: #ffffff;
   height: auto;
   padding-bottom: 90px;
 }
@@ -498,7 +498,7 @@ button {
 }
 .furnitures_section {
   width: 100%;
-  float: left;
+  
   padding-bottom: 90px;
 }
 .our_text {
@@ -523,10 +523,22 @@ button {
   float: left;
 }
 
-.container_main {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
+.cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 0; */
+  margin: 0 0px;
+  /* border:black 2px solid !important; */
+}
+.cards h3{
+  text-align: center;
+}
+.cards p{
+  text-align: center;
+}
+.border{
+  border:black 2px solid !important;
 }
 
 a:hover {
@@ -545,11 +557,11 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60%;
-  width: 42%;
+  height: 20%;
+  width: 23%;
   opacity: 0;
   transition: 0.3s ease;
-  background-color: #fabc26;
+  background-color: #0e5e6f;
   margin: 0 auto;
   border-radius: 100px;
   top: 55px;
@@ -577,7 +589,7 @@ a:hover {
   width: 100%;
   float: left;
   font-size: 18px;
-  color: #fabb25;
+  color: #0e5e6f;
   text-transform: uppercase;
   font-weight: bold;
   padding-top: 35px;
@@ -587,26 +599,10 @@ a:hover {
   float: left;
   font-size: 18px;
   color: #121111;
-  margin-top: 10px;
-  margin-left: 0px;
+  margin: 10px 0;
+  
 }
-.who_section {
-  width: 100%;
-  float: left;
-  background-image: url(/image/bg-1.png);
-  height: auto;
-  padding-bottom: 55px;
-  background-size: 100%;
-}
-.who_taital {
-  width: 100%;
-  float: left;
-  font-size: 36px;
-  color: #ffffff;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-}
+
 .designer_text {
   width: 100%;
   float: left;
@@ -708,7 +704,7 @@ a:hover {
   top: 0;
   width: 92%;
   height: 90%;
-  background-color: rgb(255, 182, 7, 0.6);
+  background-color: rgb(14,94,111, 0.6);
   z-index: 11;
   display: none;
 }
@@ -829,25 +825,12 @@ a:hover {
   margin-left: 0%;
   bottom: 50px;
 }
-.contact_section {
-  width: 100%;
-  float: left;
-  background-image: url(/image/contact-bg.png);
-  height: auto;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  padding-bottom: 90px;
-}
+
 .mail_sectin {
   width: 100%;
   float: left;
 }
-.contact_text {
-  width: 100%;
-  float: left;
-  font-size: 36px;
-  color: #ffffff;
-}
+
 .email-bt {
   color: #989696;
   width: 100%;
@@ -949,7 +932,7 @@ textarea#comment::placeholder {
   float: left;
   background-color: #313131;
   height: auto;
-  padding-bottom: 90px;
+  
 }
 .fooer_logo {
   width: 100%;
@@ -1013,5 +996,5 @@ textarea#comment::placeholder {
   color: #000;
 }
 .copyright_text a:hover {
-  color: #fdbe28;
+  color: #0e5e6f;
 }
