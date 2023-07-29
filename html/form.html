@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- header section -->
+    <div class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="logo">
+            <a href="index.html"><img src="/image/logo.png" /></a>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html">services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">about us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+
+            <input type="text" />
+            <div class="search_icon">
+              <ul>
+                <li>
+                  <a href="#"><img src="/image/search-icon.png" /></a>
+                </li>
+                <li><a href="#">LOGIN</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- end header section -->
+    <div class="about_section layout_padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="image_1"><img src="/image/form room.jpg" /></div>
+          </div>
+          <div class="col-md-6">
+            <h1 class="about_text">room details</h1>
+            <form action="">
+              <p class="text">Room Dimentions</p>
+              <div class="input-container">
+                <input type="text" placeholder="width" />
+                <input type="text" placeholder="length" />
+              </div>
+
+              <p class="text">Room Type</p>
+              <div class="input-container">
+                <select name="" id="">
+                  <option value="master">Master bed room</option>
+                  <option value="master">child room</option>
+                  <option value="master">setting room</option>
+                  <option value="master">Guest room</option>
+                </select>
+              </div>
+
+              <p class="text">Style</p>
+              <div class="input-container">
+                <input class="check" type="checkbox" name="" id="modern" />
+                <label for="modern">Modern</label>
+                <input class="check" type="checkbox" name="" id="classic" />
+                <label for="classic">Classic</label>
+                <input class="check" type="checkbox" name="" id="comfort" />
+                <label for="comfort">Comfort</label>
+                <input class="check" type="checkbox" name="" id="luxury" />
+                <label for="luxury">Luxury</label>
+              </div>
+              <p class="text">color</p>
+              <div class="input-container">
+                <input class="check" type="checkbox" name="" id="Natural" />
+                <label for="Natural">Natural</label>
+                <input class="check" type="checkbox" name="" id="Dark" />
+                <label for="Dark">Dark</label>
+                <input class="check" type="checkbox" name="" id="Light" />
+                <label for="Light">Light</label>
+                <input class="check" type="checkbox" name="" id="Brillant" />
+                <label for="Brillant">Brillant</label>
+              </div>
+            </form>
+            <div class="read_bt1"><a href="#">Let's go</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/form.js"></script>
+  </body>
+</html>
