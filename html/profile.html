@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/form.css" />
-    <link rel="stylesheet" href="/css/index.css" />
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <!-- Responsive-->
     <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
     <title>Document</title>
   </head>
   <body>
-    <!-- header section -->
     <div class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,14 +22,14 @@
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="index.html">Home</a>
               </li>
@@ -59,61 +60,107 @@
         </nav>
       </div>
     </div>
-    <!-- end header section -->
-    <div class="about_section layout_padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="image_1"><img src="/image/form room.jpg" /></div>
+    <!--  -->
+    <section class="row col-sm-12">
+      <div class="left col-sm-4">
+        <img class="profile" src="/image/form room.jpg" alt="" />
+        <h2 class="name">murad alshorman</h2>
+        <div class="buttons">
+          <button>Upload new picture</button>
+        </div>
+      </div>
+      <div class="right col-sm-8">
+        <button class="pro">info</button>
+        <button class="pro">payment & order</button>
+        <hr class="hr" />
+        <div class="section profile-sec">
+          <div class="hi col-sm-8">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">Murad alshorman</div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    muradalshorman136@gmail.com
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">+962778310048</div>
+                </div>
+                <hr />
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Address</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">Irbid /jordan</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <a
+                  class="btn btn-info"
+                  target="__blank"
+                  href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
+                  >Edit</a
+                >
+              </div>
+            </div>
           </div>
-          <div class="col-md-6">
-            <h1 class="about_text">room details</h1>
-            <form action="">
-              <p class="text">Room Dimentions</p>
-              <div class="input-container">
-                <input type="text" placeholder="width" />
-                <input type="text" placeholder="length" />
-              </div>
+        </div>
+        <div class="section orders">
+          <div class="order-container">
+            <div class="order">
+              <img src="/image/form room.jpg" alt="" />
+              <h4 class="name1">white ksajdlsd</h4>
+              <h5 class="price">$500</h5>
 
-              <p class="text">Room Type</p>
-              <div class="input-container">
-                <select name="" id="">
-                  <option value="master">Master bed room</option>
-                  <option value="master">child room</option>
-                  <option value="master">setting room</option>
-                  <option value="master">Guest room</option>
-                </select>
-              </div>
+              <span class="status1">shipped</span>
+            </div>
+            <div class="order">
+              <img src="/image/form room.jpg" alt="" />
+              <h4 class="name1">white ksajdlsd</h4>
+              <h5 class="price">$500</h5>
 
-              <p class="text">Style</p>
-              <div class="input-container">
-                <input class="check" type="checkbox" name="" id="modern" />
-                <label for="modern">Modern</label>
-                <input class="check" type="checkbox" name="" id="classic" />
-                <label for="classic">Classic</label>
-                <input class="check" type="checkbox" name="" id="comfort" />
-                <label for="comfort">Comfort</label>
-                <input class="check" type="checkbox" name="" id="luxury" />
-                <label for="luxury">Luxury</label>
-              </div>
-              <p class="text">color</p>
-              <div class="input-container">
-                <input class="check" type="checkbox" name="" id="Natural" />
-                <label for="Natural">Natural</label>
-                <input class="check" type="checkbox" name="" id="Dark" />
-                <label for="Dark">Dark</label>
-                <input class="check" type="checkbox" name="" id="Light" />
-                <label for="Light">Light</label>
-                <input class="check" type="checkbox" name="" id="Brillant" />
-                <label for="Brillant">Brillant</label>
-              </div>
-            </form>
-            <div class="read_bt1"><a href="#">Let's go</a></div>
+              <span class="status1">shipped</span>
+            </div>
+            <div class="order">
+              <img src="/image/form room.jpg" alt="" />
+              <h4 class="name1">white ksajdlsd</h4>
+              <h5 class="price">$500</h5>
+
+              <span class="status1">shipped</span>
+            </div>
+            <div class="order">
+              <img src="/image/form room.jpg" alt="" />
+              <h4 class="name1">white ksajdlsd</h4>
+              <h5 class="price">$500</h5>
+
+              <span class="status1">shipped</span>
+            </div>
+          </div>
+          <div class="pages">
+            <span class="number">1</span>
+            <span class="number">2</span>
+            <span class="number">3</span>
           </div>
         </div>
       </div>
-    </div>
-    <!-- footer -->
+    </section>
+    <!--  -->
     <div class="footer_section layout_padding">
       <div class="container">
         <div class="row">
@@ -149,6 +196,7 @@
               but the majority h ave suffered altera tion in some form, by
             </p>
           </div>
+          
         </div>
         <div class="input-group mb-3">
           <input
@@ -187,6 +235,7 @@
         </p>
       </div>
     </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -199,6 +248,7 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
-    <script src="/js/form.js"></script>
+
+    <script src="/js/profile.js"></script>
   </body>
 </html>

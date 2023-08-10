@@ -1,0 +1,409 @@
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF4E2;
+}
+
+.About {
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFF4E2;
+    
+
+}
+.up, .dowen {
+    border: 6px solid #4E4F50;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.up .contant {
+  width: 50%;
+
+    text-align: left;
+    color: #0E5E6F;
+ 
+}
+.up .image_up {
+    z-index: 1;
+    position: absolute;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+}
+.dowen{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+
+}
+.dowen h2{
+    text-align: left !important;
+
+}
+
+.dowen .contant {
+    width: 50%;
+  
+}
+.dowen .image_dowen {
+    z-index: 1;
+    position: absolute;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+}
+.dowen span{
+    font-size: 1.5em;
+
+}
+h1, .dowen h2 {
+    color: #0E5E6F;
+}
+.up .contant h3, .dowen .contant h3 {
+    color: #0E5E6F;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.up .contant p, .dowen .contant p {
+    color: #0E5E6F;
+    line-height: 1.6;
+}
+.up .contant button, .dowen .contant button {
+    background-color: #0E5E6F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+.up .contant button:hover, .dowen .contant button:hover {
+    background-color: #0056b3;
+}
+
+.image_up{
+    float: left;
+    width: 40%;
+    position: relative;
+    left: 60%;
+    top: -20%;
+}
+.image_up img
+ {
+    display: block;
+    width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.image_dowen img{
+    display: block;
+    width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+h1,h2,h3,.dowen span{
+    font-weight: 600;
+} */
+
+/* ************ Round 2****************  */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff4e2;
+}
+.About {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff4e2;
+}
+.up {
+  border: 6px solid #4e4f50;
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.dowen {
+  border: 6px solid #4e4f50;
+  width: 100%;
+  height: 500px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.up .contant {
+  width: 50%;
+  /* position: absolute; */
+  text-align: left;
+  color: #0e5e6f;
+}
+.up .image_up {
+  z-index: 1;
+  position: absolute;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+}
+.dowen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+h2 {
+  text-align: left !important;
+}
+.dowen .contant {
+  width: 50%;
+}
+.dowen .image_dowen {
+  z-index: 1;
+  position: absolute;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+}
+.dowen span {
+  font-size: 1.5em;
+}
+h1,
+h2 {
+  color: #0e5e6f;
+}
+.up .contant h3,
+.dowen .contant h3 {
+  color: #0e5e6f;
+  font-size: 24px;
+  margin: 20px 0;
+}
+.up .contant p {
+  color: #0e5e6f;
+  padding-right: 100px;
+  margin-bottom: 100px;
+  font-size: 20px;
+}
+.dowen .contant p {
+  color: #0e5e6f;
+  padding-right: 100px;
+  margin-bottom: 100px;
+  font-size: 20px;
+}
+.up .contant button {
+  background-color: #0e5e6f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.dowen .contant button {
+  background-color: #0e5e6f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.up .contant button:hover,
+.dowen .contant button:hover {
+  background-color: #0b5e70;
+}
+.image_up {
+  position: relative;
+  left: 45%;
+  top: 20%;
+  margin-bottom: 200px;
+}
+.image_dowen {
+  position: relative;
+  left: 8%;
+  top: 20%;
+}
+.image_up img {
+  display: block;
+  width: 650px;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: -350px;
+}
+.image_dowen img {
+  display: block;
+  width: 300px;
+  height: 700px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: -650px;
+}
+h2 {
+  margin-left: 736px;
+}
+h1 {
+  margin-left: 20px;
+}
+h1,
+h2,
+h3,
+.dowen span {
+  font-weight: 600;
+}
+
+@media screen and ((min-width: 481px)and (max-width:768px)) {
+  body {
+    font-size: 60%;
+  }
+  .dowen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  h2 {
+    margin-left: 25px;
+  }
+  h1,
+  h2,
+  h3,
+  .dowen span {
+    font-weight: 300;
+  }
+  .up .contant p {
+    padding-right: 0px;
+    margin-bottom: 87px;
+    font-size: 20px;
+  }
+  .image_up {
+    position: relative;
+    left: 55%;
+    top: 20%;
+    margin-bottom: 200px;
+  }
+  .image_up img {
+    display: block;
+    width: 267px;
+    height: 323px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: -426px;
+  }
+  .image_dowen {
+    position: relative;
+    left: 55%;
+  }
+  .image_dowen img {
+    display: block;
+    width: 300px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: -600px;
+  }
+  .dowen .contant p {
+    padding: 0 11px;
+    margin-bottom: 70px;
+    font-size: 16px;
+  }
+  .up {
+    height: auto;
+    font-size: 60%;
+  }
+}
+
+/* Small screens (smartphones) */
+@media only screen and (max-width: 481px) {
+  body {
+    font-size: 40%;
+  }
+
+  .up .contant p {
+    padding-right: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+  h1,
+  h2,
+  h3,
+  .dowen span {
+    font-weight: 0;
+  }
+  .up .contant h3,
+  .dowen .contant h3 {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  h1 {
+    margin-left: 0px;
+  }
+  h1,
+  h2 {
+    color: #0e5e6f;
+  }
+  .h1 {
+    font-size: 1.5rem;
+  }
+  .dowen .contant button {
+    font-size: 10px;
+  }
+  .up .contant button {
+    font-size: 10px;
+  }
+  .dowen .contant p {
+    padding-right: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+  .up,
+  .dowen {
+    height: auto;
+  }
+  .up .contant,
+  .dowen .contant {
+    width: 100%;
+  }
+
+  .image_up {
+    position: static;
+    margin-bottom: 0px;
+  }
+  .image_dowen {
+    position: static;
+  }
+  .image_up img,
+  .image_dowen img {
+    width: 100%;
+    max-height: 300px;
+    margin-top: 20px;
+  }
+  .image_dowen img {
+    margin-bottom: -0px;
+  }
+  h2 {
+    margin-left: 0;
+  }
+  h1,
+  h2,
+  h3,
+  .dowen span {
+    font-weight: 0;
+    font-size: 20px;
+  }
+}

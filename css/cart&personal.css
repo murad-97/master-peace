@@ -1,0 +1,243 @@
+p {
+  color: black;
+}
+body {
+  margin: 0;
+  /* overflow: hidden; */
+}
+#container {
+  display: flex;
+  justify-content: space-between;
+}
+.card-pic {
+  position: relative;
+}
+#navbarNav {
+  justify-content: space-around;
+}
+
+.back {
+  position: absolute;
+  top: 66px;
+  right: -112px;
+  z-index: -1;
+}
+.back p {
+  position: absolute;
+  top: 51px;
+  left: 187px;
+}
+.front img,
+.back img {
+  width: 70%;
+}
+#frontname {
+  margin: 0;
+  display: flex;
+  gap: 70px;
+}
+#frontname p {
+  margin: 0;
+}
+.info {
+  position: absolute;
+  z-index: 2;
+  top: 86px;
+  left: 30px;
+}
+#frontnum {
+  margin: 0;
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.card1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+/* input  */
+form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 60%;
+  padding: 20px;
+}
+form p {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.right h1,
+.left h1 {
+  text-align: center;
+}
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+form input {
+  margin-top: 5px;
+  margin-bottom: 9px;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid 1px gray;
+  text-align: center;
+}
+
+.date {
+  width: 20%;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+}
+.cvc {
+  width: 50%;
+}
+.vertical {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+}
+.P {
+  justify-content: space-between;
+}
+.P div {
+  width: 50%;
+}
+.btn {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background-color: #0e5e6f;
+  color: white;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Completed */
+.Completed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 20px;
+  padding: 0;
+}
+.Completed img {
+  width: 100px;
+  height: 100px;
+}
+.Completed button {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background-color: #0e5e6f;
+  color: white;
+  cursor: pointer;
+  margin: 0;
+  border-radius: 5px;
+  font-size: 20px;
+}
+.Completed p {
+  margin: 20px 0;
+}
+.display {
+  display: none;
+}
+.orders {
+  height: 59vh;
+  overflow-y: scroll;
+}
+.order-container {
+  display: flex;
+  margin: 20px;
+  background-color: #9cc0c1;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: fit-content + 5px;
+}
+.order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 95%;
+  margin: 10px auto;
+  background-color: aliceblue;
+  font-size: 20px;
+}
+.order img {
+  height: 90px;
+  margin: 8px;
+}
+.order h4,
+.order h5 {
+  font-size: 20px;
+  padding: 0;
+}
+.status1:before {
+  vertical-align: middle;
+  margin-right: 10px;
+  display: inline-block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+  /* left: 10px; */
+}
+.left {
+  padding-top: 50px;
+}
+.summary {
+  padding-top: 20px;
+}
+.summary div {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.check {
+  display: none;
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+  form {
+    
+    
+    width: 100%;
+    
+}
+
+#frontnum {
+  
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#frontname {
+ 
+  gap: 13px;
+}
+.info {
+  top: 71px;
+  left: 22px;
+}
+}
+
