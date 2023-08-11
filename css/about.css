@@ -125,12 +125,28 @@ body {
   padding: 0;
   background-color: #fff4e2;
 }
+body {
+  background: linear-gradient(to right, #fff0d9, white);
+  animation: animate-background 10s infinite ease-in-out;
+  background-size: 400% 400%;
+}
+@keyframes animate-background {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
 .About {
   display: flex;
   flex-direction: column;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff4e2;
+  /* background-color: #fff4e2; */
 }
 .up {
   border: 6px solid #4e4f50;

@@ -52,8 +52,21 @@
     padding: 0;
     margin: 0;
   }
-  body{
-    background-color: #FFFAF3;
+  body {
+    background: linear-gradient(to right, #fff0d9, white);
+    animation: animate-background 10s infinite ease-in-out;
+    background-size: 400% 400%;
+  }
+  @keyframes animate-background {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
   }
   section {
     display: flex !important;

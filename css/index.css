@@ -39,12 +39,26 @@ html {
 }
 
 body {
-  color: #666666;
-  font-size: 14px;
+background:linear-gradient(to right,#FFF0D9,white) ; 
+animation: animate-background 10s infinite ease-in-out;
+background-size: 400% 400%;
+font-size: 14px;
   font-family: Poppins;
   line-height: 1.80857;
   font-weight: normal;
   overflow-x: hidden;
+}
+@keyframes animate-background {
+  0%{
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+  
 }
 
 a {
@@ -451,7 +465,7 @@ button {
 .about_section {
   width: 100%;
   float: left;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   height: auto;
   padding-bottom: 90px;
 }

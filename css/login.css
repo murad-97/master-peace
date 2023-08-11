@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #f6f5f7;
+  /* background: #f6f5f7; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,22 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   margin: 0;
+}
+body {
+  background: linear-gradient(to right, #fff0d9, white);
+  animation: animate-background 10s infinite ease-in-out;
+  background-size: 400% 400%;
+}
+@keyframes animate-background {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 h1 {

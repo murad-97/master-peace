@@ -1,0 +1,142 @@
+body {
+    background: linear-gradient(to right, #fff0d9, white);
+    animation: animate-background 10s infinite ease-in-out;
+    background-size: 400% 400%;
+  }
+  @keyframes animate-background {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+.name {
+  margin-top: 20px;
+
+  font-size: 45px;
+  font-weight: bolder;
+  text-align: center;
+}
+.red {
+  width: 25%;
+  position: absolute;
+  bottom: 0px;
+  left: 20%;
+}
+.discount {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 10%;
+  z-index: -2;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.deal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.btn {
+  font-size: 25px;
+  margin: 20px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background-color: #0e5e6f;
+  color: white;
+  cursor: pointer !important;
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #navbarNav a {
+    color: #ffffff;
+  }
+
+  .right {
+    padding: 0 !important;
+    padding-top: 10px !important;
+    height: 90vh;
+  }
+  .left {
+    padding: 0 !important;
+    padding-top: 10px !important;
+    height: 90vh;
+  }
+  .discount {
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: inherit;
+  }
+
+  .header_section {
+    position: static;
+    background-color: #0e5e6f !important;
+  }
+
+  .name {
+    font-size: 23px;
+    margin-top: 59px;
+  }
+  .deal-buttons {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .red {
+    width: 34%;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  #navbarNav a {
+    color: #ffffff;
+  }
+  .right {
+    padding: 0 !important;
+    padding-top: 10px !important;
+    height: 70vh;
+  }
+  .left {
+    padding: 0 !important;
+    padding-top: 10px !important;
+    height: fit-content;
+  }
+  .discount {
+    height: auto;
+    position: absolute;
+    top: -20px;
+    right: inherit;
+  }
+
+  .header_section {
+    position: static;
+    background-color: #0e5e6f !important;
+  }
+
+  .name {
+    font-size: 30px;
+    margin-top: 20px;
+  }
+  .deal-buttons {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+  .red {
+    display: none;
+  }
+  .btn {
+    font-size: 20px;
+  }
+}
