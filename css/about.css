@@ -145,7 +145,8 @@ body {
   display: flex;
   flex-direction: column;
   margin: 50px auto;
-  padding: 20px;
+  padding: 80px;
+  margin-top: 80px;
   /* background-color: #fff4e2; */
 }
 .up {
@@ -265,8 +266,8 @@ h2 {
 }
 .image_dowen img {
   display: block;
-  width: 300px;
-  height: 700px;
+  width: 550px;
+  height: 600px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: -650px;
@@ -327,7 +328,7 @@ h3,
   }
   .image_dowen img {
     display: block;
-    width: 300px;
+    width: 500px;
     height: 600px;
     object-fit: cover;
     border-radius: 8px;

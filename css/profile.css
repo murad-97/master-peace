@@ -25,15 +25,14 @@ body {
 }
 .left {
   padding: 0 !important;
-  padding-top: 70px !important;
-
+  padding-top: 111px !important;
   height: 100vh;
   background-color: #0e5e6f;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: -18px;
 }
 .header_section {
   position: absolute;

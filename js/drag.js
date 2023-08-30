@@ -1,7 +1,13 @@
 let btn = document.getElementById('btn');
 let inp = document.getElementById('inp');
 let boxs=document.querySelectorAll('.box');
+let room = document.querySelector('.room');
 let drag = null; 
+
+
+
+
+
 
 dragItem();
 
@@ -21,7 +27,7 @@ function dragItem() {
         boxs.forEach(box=>{
             box.addEventListener('dragover', function(e){
                 e.preventDefault();
-                this.style.background = 'green';
+                this.style.background = 'white';
                 this.style.color = 'white';
             })
 
@@ -39,3 +45,4 @@ function dragItem() {
 
     })
 }
+
