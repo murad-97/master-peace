@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('pages/index');
 });
 Route::get('/about', function () {
-    return view('pages/aboutme');
+    return view('pages/drag2');
 });
 Route::get('/cart', function () {
     return view('pages/cart&personal');

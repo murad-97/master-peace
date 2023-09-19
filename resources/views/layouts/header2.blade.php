@@ -48,15 +48,29 @@
               </li>
             </ul>
 
-            <input type="text" />
-            <div class="search_icon">
-              <ul>
-                <li>
-                  <a href="#"><img src="/image/search-icon.png" /></a>
-                </li>
-                <li><a href="#">LOGIN</a></li>
-              </ul>
+           
+            @if (Auth::check())
+            <div class="search_icon" style="width: 30%">
+                <ul class="navbar-nav " style="justify-content: center">
+                    <li class="nav-item"> <a class="nav-link pl-0 pr-0"  href="{{ route('profile.edit', [Auth::user()]) }}">{{ Auth::user()->name }}</a>
+                    </li>
+                    <form method="POST"  action="{{ route('logout') }}">
+                        @csrf
+
+                        <li class="nav-item"> <a class="nav-link pl-0 pr-0"  href="route('logout')"
+                                onclick="event.preventDefault();this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </a></li>
+                    </form>
+                </ul>
             </div>
+        @else
+        <div class="search_icon" style="width: 25%">
+          <ul class="navbar-nav mr-auto" style="justify-content: center">
+              <li class="nav-item"><a class="nav-link"  href="/login">Login</a></li>
+          </ul>
+      </div>
+  @endif
           </div>
         </nav>
       </div>
