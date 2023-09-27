@@ -1,27 +1,81 @@
 let container = document.querySelector(".room");
-console.log(container.scrollHeight);
-console.log(container.clientHeight);
-
 let cards = document.querySelectorAll(".card");
+let details = document.querySelector(".description");
 console.log(cards);
+cards.forEach((card) => {
+  card.addEventListener('mouseenter', () => {
+   details.innerHTML = `${card.getAttribute('description')}`
+});
+card.addEventListener('mouseleave', () => {
+  details.innerHTML = ``
+});
+})
 cards.forEach((element) => {
   element.addEventListener("click", (el) => {
+    console.log(element.getAttribute('height'))
     if (element.classList.contains("furniture")) {
-      container.innerHTML += `<img
-      class="furniture element"
-      style="height: 150px;position: absolute;bottom: 0;"
-      src="${element.childNodes[1].src}"
-      alt="" />`;
+      const image = document.createElement('img');
+      image.className = 'furniture element';
+      image.style.height = `${element.getAttribute('height')}px`;
+      image.style.position = 'absolute';
+      image.style.bottom = '0';
+      image.src = element.childNodes[1].src;
+      image.alt = '';
+
+    
+    
+
+      // Append the image to the container
+      container.appendChild(image);
+      
+      let valueToAdd = element.getAttribute('value');
+    console.log(valueToAdd);
+      axios.post('/add-value-to-session-array', {
+        data: valueToAdd
+    })
+    .then(function (response) {
+        console.log(response.data.message); // Output the response message
+        // You can update the DOM or perform other actions here if needed
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
       move()
     } else if (element.classList.contains("painting")) {
-      console.log(container.style.backgroundImage);
+      
       container.style = `background-image: url(${element.childNodes[1].src});`;
+
+      let valueToAdd = element.getAttribute('value');
+      axios.post('/add-value-to-session-array', {
+        data: valueToAdd
+    })
+    .then(function (response) {
+        console.log(response.data.message); // Output the response message
+        // You can update the DOM or perform other actions here if needed
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
+      move()
     } else if (element.classList.contains("lightning")) {
       container.innerHTML += `<img
       class="lightning element"
-      style="height: 110px;position: absolute;top: 0;"
+      style="height: ${element.getAttribute('height')}px;position: absolute;top: 0;"
       src="${element.childNodes[1].src}"
       alt="" />`;
+
+
+      let valueToAdd = element.getAttribute('value');
+      axios.post('/add-value-to-session-array', {
+        data: valueToAdd
+    })
+    .then(function (response) {
+        console.log(response.data.message); // Output the response message
+        // You can update the DOM or perform other actions here if needed
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
       move()
     }
     // console.log(element.childNodes[1].src);
@@ -54,7 +108,7 @@ function move() {
           // } else {
           //     choozeElement.style.top = y - 50 + "px";
           // }
-console.log(element.classList.contains('furniture'));
+
           // choozeElement.style.bottom = "0";
           if (x < width) {
             choozeElement.style.left = 0;
@@ -72,3 +126,5 @@ console.log(element.classList.contains('furniture'));
       choozeElement = null;
     };
   }
+  // For the thumbnail demo! :]
+

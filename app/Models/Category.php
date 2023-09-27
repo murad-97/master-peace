@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    public function products()
+    {
+        return $this->hasMany(Product::class,"categoryId");
+    }
+    public function styles()
+    {
+        return $this->hasMany(Style::class,"categoryId");
+    }
     use HasFactory;
 }

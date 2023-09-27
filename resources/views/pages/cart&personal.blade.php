@@ -12,69 +12,45 @@
         <h1 class="header">Order summary</h1>
         <div class="container col-sm-12">
           <div class="orders">
+            @php
+              $total = 0;
+            @endphp
+            @foreach ($products as $product)
+             
+              @php
+              $total += $product->price *$product->quantity;
+            @endphp
             <div class="order">
               <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
+              <h4 class="name1">{{ $product->name }}</h4>
+              <h5 class="price">${{$product->price *$product->quantity }}</h5>
 
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
+              <h5 class="price">Qty:{{ $product->quantity }}</h5>
               
             </div>
-            <div class="order">
-              <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
-
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
-            <div class="order">
-              <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
-
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
-            <div class="order">
-              <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
-
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
-            <div class="order">
-              <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
-
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
-            <div class="order">
-              <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
-
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
-            <div class="order">
-              <img src="/image/form room.jpg" alt="" />
-              <h4 class="name1">white ksajdlsd</h4>
-              <h5 class="price">$500</h5>
-
-              <a><i style="color: red;" class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
+            @endforeach
+           
           </div>
           <div class="summary">
+            @if ($products->discount)
             <div>
-              <h4 class="total">DISC:20%</h3>
-              <h4 class="total">$200</h3>
-            </div>
+              <h4 class="total">DISC:{{ $products->discount }}%</h3>
+               
+                <h4 class="total">${{$total *$products->discount /100  }}</h3>
+              </div>
+              @endif
             <div>
               <h4 class="total">DILIVARY</h3>
               <h4 class="total">$40</h3>
             </div>
             <div>
               <h1 class="total">TOTAL</h1>
-              <h1 class="total">$1700</h1>
+              @if ($products->discount)
+                
+              <h1 class="total">${{ $total - ($total *$products->discount /100) -40 }}</h1>
+              @else
+              <h1 class="total">${{ $total -40}}</h1>
+              @endif
             </div>
           </div>
         </div>
@@ -82,7 +58,7 @@
       </div>
 
       <div class="right col-lg-6 col-md-12 col-sm-12">
-        <div class="card1 col-sm-12">
+        <div class="card1 col-sm-12 display">
           <!-- <img src="/image/bg-card-front.png" alt="" class="frontshadow" /> -->
           <div class="card-pic">
             <div class="front">
@@ -103,7 +79,7 @@
             </div>
           </div>
 
-          <form class="card-form" action="submit">
+          <form class="card-form " action="submit">
             <p>CARD HOLDER NAME</p>
             <input
               type="text"
@@ -148,7 +124,7 @@
           </form>
         </div>
         <!--  -->
-        <form class="personal display" action="submit">
+        <form class="personal " action="submit">
           <h1>Personal Information</h1>
           <p>FULL NAME</p>
           <input

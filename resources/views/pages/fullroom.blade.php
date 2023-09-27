@@ -12,10 +12,14 @@
       </div>
       <div class="right col-sm-8">
         <img class="discount" src="/image/discount.png" alt="" />
-        <div class="deal-buttons">
-            <button class="btn">Take the deal</button>
-            <button class="btn">Choose your 
-                furniture</button>
+        <div class="deal-buttons mb-4" style="width: 60%">
+            <div class="read_bt">
+              <a href="/deal" >Take the deal</a>
+            </div>
+         <div class="read_bt" >
+             <a href="/cart" >Choose your 
+                 furniture</a>
+         </div>
         </div> 
       </div>
       <img

@@ -5,6 +5,7 @@
     <!-- header section end -->
     <!-- banner section start -->
     <div class="banner_section layout_padding">
+       
         <div class="container">
             <div id="costum_slider" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -71,7 +72,7 @@
                         <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the
                         </p>
                         <div class="read_bt_main">
-                            <div class="read_bt"><a href="#">Read More</a></div>
+                            <div class="read_bt"><a href="#">CONTACT US</a></div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
@@ -80,7 +81,7 @@
                         <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the
                         </p>
                         <div class="read_bt_main">
-                            <div class="read_bt"><a href="#">Read More</a></div>
+                            <div class="read_bt"><a href="{{ route("interactive") }}">TRY IT</a></div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
@@ -89,7 +90,7 @@
                         <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the
                         </p>
                         <div class="read_bt_main">
-                            <div class="read_bt"><a href="#">Read More</a></div>
+                            <div class="read_bt"><a href="#">GO SHOPPING </a></div>
                         </div>
                     </div>
                     
@@ -106,50 +107,24 @@
                 </p>
             <div class="furnitures_section2 layout_padding">
                 <div class="row">
+                    @foreach ($Categories as $category)
+                        
+                    
                     <div class="col-md-4 cards">
-                        <div c>
+                        <div >
                             <div class="container_main">
                                 <img src="/image/img-2.png" alt="Avatar" class="image">
                                 <div class="overlay">
-                                    <a href="#" class="icon" title="User Profile">
-                                        <i class="fa fa-search"></i>
+                                    <a href="#" class="icon" title="User Profile" style="font-size: 30px">
+                                        <i  class="fa fa-search"></i>
                                     </a>
                                 </div>
                             </div>
-                            <h3 class="temper_text">Painting</h3>
-                            <p class="dololr_text">Explore a canvas of emotions through captivating strokes and colors.</p>
+                            <h3 class="temper_text">{{ $category->name }}</h3>
+                            <p class="dololr_text">{{ $category->description }}</p>
                         </div>
                     </div>
-                    <div class="col-md-4 cards">
-                        <div >
-
-                            <div class="container_main">
-                                <img src="/image/img-3.png" alt="Avatar" class="image">
-                                <div class="overlay">
-                                    <a href="#" class="icon" title="User Profile">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h3 class="temper_text">Furnitures</h3>
-                            <p class="dololr_text">Define your space with curated designs blending comfort and aesthetics.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 cards">
-                        <div >
-                            <div class="container_main">
-                                <img src="/image/img-3.png" alt="Avatar" class="image">
-                                <div class="overlay">
-                                    <a href="#" class="icon" title="User Profile">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h3 class="temper_text">lightning</h3>
-                            <p class="dololr_text"> Illuminate life with striking fixtures casting a perfect ambiance glow.</p>
-                        </div>
-                    </div>
-                    
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -295,148 +270,33 @@
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    @for ($i = 0; $i < count($reviews); $i += 2)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $i/2 }}" class="{{ $i === 0 ? 'active' : '' }}"></li>
+                    @endfor
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <h1 class="client_text">what is says our clients</h1>
+                    @for ($i = 0; $i < count($reviews); $i += 2)
+                    <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
+                        <h1 class="client_text">What Our Clients Say</h1>
                         <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                        <div class="clients_section2 layout_padding">
-                            <div class="client_1">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-7.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
+                            <div class="clients_section2 layout_padding">
+                                @for ($j = $i; $j < $i + 2 && $j < count($reviews); $j++)
+                                    <div class="client_{{ $j - $i + 1 }}">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="image_7"><img src="/image/img-{{ $reviews[$j]->user->id }}.png"></div>
+                                                <div class="quote_icon"><img src="/image/quote-icon.png"></div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <h1 class="loksans_text">{{ $reviews[$j]->user->name }}</h1>
+                                                <p class="dolor_ipsum_text">{{ $reviews[$j]->description }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="client_2">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-8.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
+                                @endfor
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <h1 class="client_text">what is says our clients</h1>
-                        <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                        <div class="clients_section2 layout_padding">
-                            <div class="client_1">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-7.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="client_2">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-8.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <h1 class="client_text">what is says our clients</h1>
-                        <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                        <div class="clients_section2 layout_padding">
-                            <div class="client_1">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-7.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="client_2">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-8.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <h1 class="client_text">what is says our clients</h1>
-                        <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                        <div class="clients_section2 layout_padding">
-                            <div class="client_1">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-7.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="client_2">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="image_7"><img src="/image/img-8.png"></div>
-                                        <div class="quote_icon"><img src="/image/quote-icon.png"></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <h1 class="loksans_text">loksans</h1>
-                                        <p class="dolor_ipsum_text">ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed veniam, quis nostrud exercitation ullamco laboris nisi ut reprehenderit
-                                            in voluptate velit</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endfor
                 </div>
             </div>
         </div>

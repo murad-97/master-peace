@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,18 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/log', function () {
-    return view('pages/login');
-});
-Route::get('/', function () {
-    return view('pages/index');
-});
+
+
+Route::resource('home', CategoryController::class);
+Route::get('interactive', [CategoryController::class,'catygoryIndex'])->name('interactive');
+Route::post('/add-value-to-session-array', [CartsController::class,'saveArrayToSession']);
+Route::post('/remove-product-from-cart', [CartsController::class,'removeProductFromCart']);
+Route::post('/remove-value-from-session-array', [CartsController::class,'removeProduct']);
+Route::get('/deal', [CategoryController::class,'deal']);
+Route::get('interactive/{id}', [CategoryController::class,'filter'])->name('filter');
+Route::get('/cart', [CategoryController::class,'cart'])->name('cart');
+Route::get('fullroom', [CategoryController::class,'fullroom']);
+
+
+
 Route::get('/about', function () {
     return view('pages/drag2');
 });
-Route::get('/cart', function () {
-    return view('pages/cart&personal');
-});
+
 Route::get('/contact', function () {
     return view('pages/profile');
 });

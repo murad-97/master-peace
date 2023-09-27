@@ -357,6 +357,12 @@ font-size: 14px;}
 .main {
     width: 100%;
 }
+.clients_section{
+    height: auto;
+}
+.clients_section2{
+    height: auto;
+}
 .btn_main {
     margin-top: 30px;
     padding-bottom: 30px;

@@ -63,6 +63,7 @@
                 Alshorman</a></p>
     </div>
 </div>
+@yield("js")
 
     <!--  footer section end -->
     <!-- copyright section start -->
@@ -70,7 +71,6 @@
     <!-- Javascript files-->
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{asset("js/bootstrap.bundle.min.js") }}"></script>
-    @yield("js")
 </body>
 
 </html>

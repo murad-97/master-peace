@@ -15,6 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
+    
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">

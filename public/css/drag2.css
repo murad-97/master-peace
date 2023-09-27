@@ -80,6 +80,7 @@ menu:hover > menuitem {
 }
 
 .listt a {
+
   background: rgb(255, 255, 255);
   color: rgb(14, 94, 111);
   min-width: 190px;
@@ -157,6 +158,27 @@ body {
 h2 {
   font-weight: 900;
 }
+
+
+
+.room img::after {
+  content: 'X';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+
+
 
 .card {
   background: #fff;
@@ -353,3 +375,5 @@ footer {
 * {
     transition: none;
   }
+ 
+  
