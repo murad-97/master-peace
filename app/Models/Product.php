@@ -20,5 +20,9 @@ class Product extends Model
     {
         return $this->hasMany(Review::class);
     }
+    public function orderitem()
+    {
+        return $this->hasMany(Orderitem::class);
+    }
     use HasFactory;
 }

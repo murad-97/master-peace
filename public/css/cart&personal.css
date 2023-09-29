@@ -77,14 +77,14 @@ body {
 }
 
 /* input  */
-form {
+.form {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   width: 60%;
   padding: 20px;
 }
-form p {
+.form p {
   margin-top: 5px;
   margin-bottom: 2px;
 }
@@ -99,7 +99,7 @@ form p {
   align-items: center;
   height: 100vh;
 }
-form input {
+.form input {
   margin-top: 5px;
   margin-bottom: 9px;
   font-size: 20px;
@@ -246,7 +246,7 @@ form input {
   .left {
     padding-top: 0;
   }
-  form {
+  .form {
     width: 100%;
   }
 
@@ -254,11 +254,11 @@ form input {
     font-size: 24px;
     margin-bottom: 5px;
   }
-  form input {
+  .form input {
     font-size: 14px;
   }
 
-  form p {
+  .form p {
     margin: 0;
     margin-top: 5px;
     margin-bottom: 2px;
@@ -279,7 +279,7 @@ form input {
     font-size: 19px;
     margin-bottom: 5px;
   }
-  form input {
+  .form input {
     font-size: 14px;
   }
   #frontname {
@@ -290,7 +290,7 @@ form input {
     top: 71px;
     left: 22px;
   }
-  form {
+  .form {
     width: 100%;
   }
   .right {
@@ -320,7 +320,7 @@ form input {
   .left {
     padding-top: 0;
   }
-  form p {
+  .form p {
     margin: 0;
     margin-top: 5px;
     margin-bottom: 2px;

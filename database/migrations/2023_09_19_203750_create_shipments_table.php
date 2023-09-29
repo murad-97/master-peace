@@ -18,10 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('userId');
             $table->foreign('userId')->references('id')->on('users');
             $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
-            $table->string('postalCode');
             $table->timestamps();
         });
     }

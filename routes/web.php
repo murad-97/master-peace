@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::post('/remove-value-from-session-array', [CartsController::class,'removeP
 Route::get('/deal', [CategoryController::class,'deal']);
 Route::get('interactive/{id}', [CategoryController::class,'filter'])->name('filter');
 Route::get('/cart', [CategoryController::class,'cart'])->name('cart');
+Route::post('/checkOut', [CategoryController::class,'checkOut'])->name('checkOut');
 Route::get('fullroom', [CategoryController::class,'fullroom']);
 
 
@@ -47,5 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// stripe
+Route::post('/stripe/payment', [StripeController::class, 'payment'])->name('stripe');
+Route::get('/stripe/success', 'StripePaymentController@success')->name('stripe_success');
+Route::get('/stripe/cancel', 'StripePaymentController@cancel')->name('stripe_cancel');
 
 require __DIR__.'/auth.php';

@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+    public function user()
+    {
+        return $this->belongsTo(User::class,"userId");
+    }
+    public function orderdetail()
+    {
+        return $this->hasMany(Orderdetail::class);
+    }
     use HasFactory;
 }
