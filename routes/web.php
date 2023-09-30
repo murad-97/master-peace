@@ -51,8 +51,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // stripe
-Route::post('/stripe/payment', [StripeController::class, 'payment'])->name('stripe');
-Route::get('/stripe/success', 'StripePaymentController@success')->name('stripe_success');
-Route::get('/stripe/cancel', 'StripePaymentController@cancel')->name('stripe_cancel');
+Route::post('stripe/payment', [StripeController::class, 'payment'])->name('stripe');
+Route::get('stripe/success', [StripeController::class, 'success'])->name('stripe_success');
+Route::get('stripe/cancel', [StripeController::class, 'cancel'])->name('stripe_cancel');
 
 require __DIR__.'/auth.php';
