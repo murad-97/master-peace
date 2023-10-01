@@ -125,7 +125,7 @@
           </form>
         </div> --}}
             <!--  -->
-            <form class="personal form" method="POST" action="{{ route('checkOut') }}">
+            <form class="personal form" method="get" action="{{ route('checkOut') }}">
                 @csrf
                 <h1 style="font-size: 30px;font-weight:bold">Personal Information</h1>
                 <p>FULL NAME</p>

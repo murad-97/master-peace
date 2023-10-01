@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -12,6 +13,25 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rangefilter()
+    {
+        //
+    }
+    public function subcategories($id = null)
+    {
+        $query = Product::query();
+        $categories =DB::table('categories')->get();
+
+        if ($id !== null) {
+            $query->where('categoryId', $id);
+        }
+
+        $products = $query->get();
+
+        return view('pages.products', ['products' => $products, 'categories' => $categories]);
+    }
+
     public function index()
     {
         //

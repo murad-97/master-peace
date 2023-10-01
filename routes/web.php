@@ -4,6 +4,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,14 +29,14 @@ Route::post('/remove-value-from-session-array', [CartsController::class,'removeP
 Route::get('/deal', [CategoryController::class,'deal']);
 Route::get('interactive/{id}', [CategoryController::class,'filter'])->name('filter');
 Route::get('/cart', [CategoryController::class,'cart'])->name('cart');
-Route::post('/checkOut', [CategoryController::class,'checkOut'])->name('checkOut');
+Route::get('/checkOut', [CategoryController::class,'checkOut'])->name('checkOut');
 Route::get('fullroom', [CategoryController::class,'fullroom']);
 
 
 
-Route::get('/about', function () {
-    return view('pages/drag2');
-});
+// Route::get('/product', function () {
+//     return view('pages/products');
+// });
 
 Route::get('/contact', function () {
     return view('pages/profile');
@@ -55,4 +57,15 @@ Route::post('stripe/payment', [StripeController::class, 'payment'])->name('strip
 Route::get('stripe/success', [StripeController::class, 'success'])->name('stripe_success');
 Route::get('stripe/cancel', [StripeController::class, 'cancel'])->name('stripe_cancel');
 
+
+/* PayPal */
+Route::post('paypal/payment', [PaypalController::class, 'payment'])->name('paypal');
+Route::get('paypal/success', [PaypalController::class, 'success'])->name('paypal_success');
+Route::get('paypal/cancel', [PaypalController::class, 'cancel'])->name('paypal_cancel');
+
 require __DIR__.'/auth.php';
+
+
+// prroduct page 
+Route::get('subcategories/{id?}', [ProductController::class, 'subcategories'])->name('subcategories');
+Route::get('rangefilter', [ProductController::class, 'rangefilter'])->name('rangefilter');

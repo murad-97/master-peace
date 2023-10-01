@@ -208,6 +208,7 @@ public function checkOut(Request $request)
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function create()
     {
         //

@@ -66,7 +66,7 @@
               <h2>We've added your details</h2>
               <h4>chooze your payment method</h4>
               <br>
-              <form style="width:100%" action="{{ route('stripe') }}" method="post">
+              <form style="width:100%" action="{{ route('paypal') }}" method="post">
                 @csrf
                
                 <button type="submit"><i class="fa fa-paypal" aria-hidden="true"></i> paypal</button>

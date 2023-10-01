@@ -90,7 +90,7 @@
                         <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the
                         </p>
                         <div class="read_bt_main">
-                            <div class="read_bt"><a href="#">GO SHOPPING </a></div>
+                            <div class="read_bt"><a href="{{ route("subcategories") }}">GO SHOPPING </a></div>
                         </div>
                     </div>
                     

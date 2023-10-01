@@ -57,7 +57,7 @@ foreach ($products as $product) {
 if (empty($lineItems)) {
     // Handle the case when the cart is empty (no line items)
     // You can redirect or display a message to the user
-    return redirect()->route('cart');
+    return redirect()->back();
 }
 
 \Stripe\Stripe::setApiKey(config('stripe.stripe_sk'));
@@ -73,7 +73,7 @@ return redirect()->away($response->url);
 } else {
     // Handle the case when the cart is empty (no line items)
     // You can redirect or display a message to the user
-    return redirect()->route('checkOut');
+    return redirect()->back();
 }
 
         
@@ -126,13 +126,13 @@ $total += $product->price * $product->quantity;
             ]);
             
                         }
-
+                        session()->forget('cart');
                         return redirect()->route("home.index");
 
     }
 
     public function cancel()
     {
-        return "Payment is cancelled!";
+        return redirect()->back();
     }
 }
