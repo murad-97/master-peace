@@ -105,9 +105,9 @@
                                 <div class="reviews-box">
                                     <div class="row">
                                         <div class="col-xl-12">
-                                            @foreach ($product->review as $review)
-                                                <div class="product_reviews_box">
-                                                    <h3 class="product_reviews_title">2 Product reviews</h3>
+                                            <div class="product_reviews_box">
+                                                    <h3 class="product_reviews_title"> {{ count($productRatings) }}  Product reviews</h3>
+                                                    @foreach ($product->review as $review)
                                                     <div class="product_reviews_single">
                                                         <div class="product_reviews_image">
                                                             <img src={{ asset('assets/images/products/review-1.jpg') }}
