@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -14,10 +17,32 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function rangefilter()
-    {
-        //
-    }
+     public function product_details($id)
+     {
+        $product = Product::findOrFail($id);
+       // Assuming you have a relationship named 'reviews' in your Product model.
+$reviews = $product->review;
+
+// Extract the rating values from the reviews.
+$productRatings = $reviews->pluck('review')->toArray();
+        $averageRating = count($productRatings) > 0 ? array_sum($productRatings) / count($productRatings) : 0;
+
+
+         return view('pages.product-details', ['product' => $product,"averageRating"=>$averageRating,"productRatings"=>$productRatings]);
+     }
+     public function search_products(Request $request, $id=null)
+     {
+         $categories = Category::all();
+         $query = Product::whereBetween('price', [$request->rangemin, $request->rangemax]);
+ 
+         if ($id!=null) {
+             $query->where('categoryId', $id);
+         }   
+ 
+         $products = $query->get();
+ 
+         return view('pages.products', ['products' => $products, 'categories' => $categories]);
+     }
     public function subcategories($id = null)
     {
         $query = Product::query();
@@ -32,6 +57,16 @@ class ProductController extends Controller
         return view('pages.products', ['products' => $products, 'categories' => $categories]);
     }
 
+    public function review(Request $request)
+    {
+      Review::create([
+"userId"=>Auth::user()->id,
+"productId"=>$request->product,
+"review"=>$request->review,
+"description"=>$request->description,
+      ]);
+      return redirect()->back();
+    }
     public function index()
     {
         //

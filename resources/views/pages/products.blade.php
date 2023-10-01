@@ -29,6 +29,7 @@
                         <div class="product-sidebar__single">
                             <h3>Categories</h3>
                             <ul class="list-unstyled product-sidebar__links">
+                                <li><a href="{{ route('subcategories') }}">All<i class="fa fa-angle-right"></i></a></li>
                                @foreach ($categories as $category) 
                                <li><a href="{{ route('subcategories', ['id' => $category->id]) }}">{{ $category->name }} <i class="fa fa-angle-right"></i></a></li>
                                @endforeach
@@ -38,16 +39,21 @@
                             <h3>Price</h3>
                             <div class="product-sidebar__price-range">
                                 <div class="range-slider-price" id="range-slider-price"></div>
+                              <form method="POST" action="{{ route("search_products") }}">
+                                @csrf
                                 <div class="form-group">
                                     <div class="left">
                                         <p>$<span id="min-value-rangeslider"></span></p>
+                                        <input value=0 id="min" type="text" name="rangemin" hidden>
                                         <span>-</span>
                                         <p>$<span id="max-value-rangeslider"></span></p>
+                                        <input value=0 id="max" type="text" name="rangemax" hidden>
                                     </div><!-- /.left -->
                                     <div class="right">
                                         <input type="submit" class="thm-btn" value="Filter">
                                     </div><!-- /.right -->
                                 </div>
+                              </form>
                             </div><!-- /.product-sidebar__price-range -->
                         </div><!-- /.product-sidebar__single -->
                         <!-- /.product-sidebar__single -->
@@ -65,7 +71,7 @@
                             <div class="product-card__image">
                                 <img src="{{ asset("assets/images/products/product-1-1.jpg") }}" alt="">
                                 <div class="product-card__image-content">
-                                    <a href="#"><i class="organik-icon-heart"></i></a>
+                                    <a href={{ route('product_details', ['id' => $product->id]) }}><i class="organik-icon-heart"></i></a>
                                     <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
                                 </div><!-- /.product-card__image-content -->
                             </div><!-- /.product-card__image -->

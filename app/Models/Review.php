@@ -18,4 +18,11 @@ class Review extends Model
     return $this->belongsTo(Product::class,"productId");
 }
     
+protected $fillable = [
+    'userId', // Add 'userId' to the $fillable array
+    'productId',// Other fillable properties here...
+    'review',// Other fillable properties here...
+    'description',
+    // Other fillable properties here...
+];
 }

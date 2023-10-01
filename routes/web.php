@@ -34,9 +34,9 @@ Route::get('fullroom', [CategoryController::class,'fullroom']);
 
 
 
-// Route::get('/product', function () {
-//     return view('pages/products');
-// });
+Route::get('/product', function () {
+    return view("pages.product-details");
+});
 
 Route::get('/contact', function () {
     return view('pages/profile');
@@ -68,4 +68,6 @@ require __DIR__.'/auth.php';
 
 // prroduct page 
 Route::get('subcategories/{id?}', [ProductController::class, 'subcategories'])->name('subcategories');
-Route::get('rangefilter', [ProductController::class, 'rangefilter'])->name('rangefilter');
+Route::post('search_products', [ProductController::class, 'search_products'])->name('search_products');
+Route::get('product_details/{id?}', [ProductController::class, 'product_details'])->name('product_details');
+Route::post('review', [ProductController::class, 'review'])->name('review');

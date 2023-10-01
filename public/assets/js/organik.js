@@ -38,76 +38,6 @@
     });
   }
 
-  if ($(".contact-form-validated").length) {
-    $(".contact-form-validated").validate({
-      // initialize the plugin
-      rules: {
-        name: {
-          required: true
-        },
-        email: {
-          required: true,
-          email: true
-        },
-        message: {
-          required: true
-        },
-        subject: {
-          required: true
-        }
-      },
-      submitHandler: function (form) {
-        // sending value with ajax request
-        $.post(
-          $(form).attr("action"),
-          $(form).serialize(),
-          function (response) {
-            $(form).parent().find(".result").append(response);
-            $(form).find('input[type="text"]').val("");
-            $(form).find('input[type="email"]').val("");
-            $(form).find("textarea").val("");
-          }
-        );
-        return false;
-      }
-    });
-  }
-
-  // mailchimp form
-  if ($(".mc-form").length) {
-    $(".mc-form").each(function () {
-      var Self = $(this);
-      var mcURL = Self.data("url");
-      var mcResp = Self.parent().find(".mc-form__response");
-
-      Self.ajaxChimp({
-        url: mcURL,
-        callback: function (resp) {
-          // appending response
-          mcResp.append(function () {
-            return '<p class="mc-message">' + resp.msg + "</p>";
-          });
-          // making things based on response
-          if (resp.result === "success") {
-            // Do stuff
-            Self.removeClass("errored").addClass("successed");
-            mcResp.removeClass("errored").addClass("successed");
-            Self.find("input").val("");
-
-            mcResp.find("p").fadeOut(10000);
-          }
-          if (resp.result === "error") {
-            Self.removeClass("successed").addClass("errored");
-            mcResp.removeClass("successed").addClass("errored");
-            Self.find("input").val("");
-
-            mcResp.find("p").fadeOut(10000);
-          }
-        }
-      });
-    });
-  }
-
   if ($(".video-popup").length) {
     $(".video-popup").magnificPopup({
       type: "iframe",
@@ -341,112 +271,21 @@
 
     var limitFieldMin = document.getElementById("min-value-rangeslider");
     var limitFieldMax = document.getElementById("max-value-rangeslider");
-
+    var min = document.getElementById("min");
+    var max = document.getElementById("max");
+   
+    
+    
     priceRange.noUiSlider.on("update", function (values, handle) {
-      (handle ? $(limitFieldMax) : $(limitFieldMin)).text(values[handle]);
+        // Update the "min" and "max" elements with their respective values
+        limitFieldMin.textContent = values[0];
+        limitFieldMax.textContent = values[1];
+    
+        // You can also update the "min" and "max" input fields if needed
+      
+       
+        min.attributes[0].value =values[0]
+        max.attributes[0].value =values[1]
     });
   }
-
-  function thmSwiperInit() {
-    // swiper slider
-    const swiperElm = document.querySelectorAll(".thm-swiper__slider");
-    swiperElm.forEach(function (swiperelm) {
-      const swiperOptions = JSON.parse(swiperelm.dataset.swiperOptions);
-      let thmSwiperSlider = new Swiper(swiperelm, swiperOptions);
-    });
-  }
-  function thmTinyInit() {
-    // tiny slider
-    const tinyElm = document.querySelectorAll(".thm-tiny__slider");
-    tinyElm.forEach(function (tinyElm) {
-      const tinyOptions = JSON.parse(tinyElm.dataset.tinyOptions);
-      let thmTinySlider = tns(tinyOptions);
-    });
-  }
-
-  // window load event
-
-  $(window).on("load", function () {
-    if ($(".preloader").length) {
-      $(".preloader").fadeOut();
-    }
-    thmSwiperInit();
-    thmTinyInit();
-
-    if ($(".circle-progress").length) {
-      $(".circle-progress").appear(function () {
-        let circleProgress = $(".circle-progress");
-        circleProgress.each(function () {
-          let progress = $(this);
-          let progressOptions = progress.data("options");
-          progress.circleProgress(progressOptions);
-        });
-      });
-    }
-    if ($(".post-filter").length) {
-      var postFilterList = $(".post-filter li");
-      // for first init
-      $(".filter-layout").isotope({
-        filter: ".filter-item",
-        animationOptions: {
-          duration: 500,
-          easing: "linear",
-          queue: false
-        }
-      });
-      // on click filter links
-      postFilterList.on("click", function () {
-        var Self = $(this);
-        var selector = Self.attr("data-filter");
-        postFilterList.removeClass("active");
-        Self.addClass("active");
-
-        $(".filter-layout").isotope({
-          filter: selector,
-          animationOptions: {
-            duration: 500,
-            easing: "linear",
-            queue: false
-          }
-        });
-        return false;
-      });
-    }
-
-    if ($(".post-filter.has-dynamic-filter-counter").length) {
-      // var allItem = $('.single-filter-item').length;
-
-      var activeFilterItem = $(".post-filter.has-dynamic-filter-counter").find(
-        "li"
-      );
-
-      activeFilterItem.each(function () {
-        var filterElement = $(this).data("filter");
-        var count = $(".filter-layout").find(filterElement).length;
-        $(this).append("<sup>[" + count + "]</sup>");
-      });
-    }
-  });
-
-  // window scroll event
-
-  $(window).on("scroll", function () {
-    if ($(".stricked-menu").length) {
-      var headerScrollPos = 130;
-      var stricky = $(".stricked-menu");
-      if ($(window).scrollTop() > headerScrollPos) {
-        stricky.addClass("stricky-fixed");
-      } else if ($(this).scrollTop() <= headerScrollPos) {
-        stricky.removeClass("stricky-fixed");
-      }
-    }
-    if ($(".scroll-to-top").length) {
-      var strickyScrollPos = 100;
-      if ($(window).scrollTop() > strickyScrollPos) {
-        $(".scroll-to-top").fadeIn(500);
-      } else if ($(this).scrollTop() <= strickyScrollPos) {
-        $(".scroll-to-top").fadeOut(500);
-      }
-    }
-  });
 })(jQuery);

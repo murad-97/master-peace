@@ -115,7 +115,7 @@
                             <div class="container_main">
                                 <img src="/image/img-2.png" alt="Avatar" class="image">
                                 <div class="overlay">
-                                    <a href="#" class="icon" title="User Profile" style="font-size: 30px">
+                                    <a href="{{ route('subcategories', ['id' => $category->id]) }}" class="icon" title="User Profile" style="font-size: 30px">
                                         <i  class="fa fa-search"></i>
                                     </a>
                                 </div>
