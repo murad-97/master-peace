@@ -36,7 +36,7 @@
                                         @if ($i <= $averageRating)
                                             <a href="#"><i class="fa fa-star"></i></a>
                                         @else
-                                            <a href="#" class="deactive"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="far fa-star"></i></a>
                                         @endif
                                     </a>
                                 @endfor
@@ -48,13 +48,9 @@
                         </div>
 
                         <div class="product-quantity-box">
-                            <div class="quantity-box">
-                                <button type="button" class="sub">-</button>
-                                <input type="number" id="2" value="1" />
-                                <button type="button" class="add">+</button>
-                            </div>
+
                             <div class="addto-cart-box">
-                                <button class="thm-btn" type="submit">Add to Cart</button>
+                                <a href="{{ route('singleadd', ['id' => $product->id]) }}" class="thm-btn">Add to Cart</a>
                             </div>
 
                         </div>
@@ -106,103 +102,112 @@
                                     <div class="row">
                                         <div class="col-xl-12">
                                             <div class="product_reviews_box">
-                                                    <h3 class="product_reviews_title"> {{ count($productRatings) }}  Product reviews</h3>
-                                                    @foreach ($product->review as $review)
-                                                    <div class="product_reviews_single">
-                                                        <div class="product_reviews_image">
-                                                            <img src={{ asset('assets/images/products/review-1.jpg') }}
-                                                                alt="">
-                                                        </div>
-                                                        <div class="product_reviews_content">
-                                                            <h3>{{ $review->user->name }}<span>{{ $review->created_at }}</span>
-                                                            </h3>
-                                                            <p style="width: 58vw">{{ $review->description }}</p>
-                                                            <div class="product_reviews_rating product_detail_review">
-                                                                @for ($i = 1; $i <= 5; $i++)
-                                                                    <a href="#">
-                                                                        @if ($i <= $review->review)
-                                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                                        @else
-                                                                            <a href="#" class="deactive"><i
-                                                                                    class="fa fa-star"></i></a>
-                                                                        @endif
-                                                                    </a>
-                                                                @endfor
+                                                <h3 class="product_reviews_title"> {{ count($productRatings) }} Product
+                                                    reviews</h3>
+                                                    @php
+                                                    $reviews = $product->review->reverse()->take(2);
+                                                @endphp
+                                                    @foreach ($reviews as $review)
+                                                      
+                                                            <div class="product_reviews_single">
+                                                                <div class="product_reviews_image">
+                                                                    <img src={{ asset('assets/images/products/review-1.jpg') }}
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="product_reviews_content">
+                                                                    <h3>{{ $review->user->name }}<span>{{ $review->created_at }}</span>
+                                                                    </h3>
+                                                                    <p style="width: 58vw">{{ $review->description }}</p>
+                                                                    <div
+                                                                        class="product_reviews_rating product_detail_review">
+                                                                        @for ($i = 1; $i <= 5; $i++)
+                                                                            <a href="#">
+                                                                                @if ($i <= $review->review)
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star"></i></a>
+                                                                                @else
+                                                                                    <a href="#">
+                                                                                        <i class="far fa-star"></i> </a>
+                                                                                @endif
+                                                                            </a>
+                                                                        @endfor
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                            @endforeach
-                                        </div>
-                                        {{-- /// --}}
-
-
-                                    </div>
-                                    @if (Auth::check())
-                                        <div class="col-xl-12">
-                                            <div class="add_review_box">
-                                                <h3 class="add_review_title">Add a review</h3>
-                                                <div class="add_review_rating">
-                                                    <span>Rate this Product?</span>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#" class="deactive"><i class="fa fa-star"></i></a>
-                                                </div>
-                                                <form class="add_review_form" method="POST"
-                                                    action="{{ route('review') }}">
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="input-box">
-                                                                <textarea name="description" placeholder="Write review" required=""></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="input-box">
-                                                                <input type="text" value="{{ Auth::user()->name }}"
-                                                                    name="name" placeholder="Full name"
-                                                                    required="">
-                                                            </div>
-                                                        </div>
-                                                        {{--  --}}
-                                                        <div class="col-md-6">
-                                                            <div class="input-box">
-                                                                <input type="text" name="review"
-                                                                    placeholder="Full name" required>
-                                                            </div>
-                                                        </div>
-                                                        {{--  --}}
-                                                        <div class="col-md-6">
-                                                            <div class="input-box">
-                                                                <input value="{{ Auth::user()->email }}" type="email"
-                                                                    name="email" placeholder="Email address" required>
-                                                                <input value="{{ $product->id }}" type="text"
-                                                                    name="product" placeholder="Email address" hidden>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                            <div class="review_submit_btn">
-                                                                <input value="Submit Review" type="submit"
-                                                                    class="thm-btn">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                        
+                                                    @endforeach
                                             </div>
+                                            {{-- /// --}}
+
+
                                         </div>
-                                    @endif
+                                        @if (Auth::check())
+                                            <div class="col-xl-12">
+                                                <div class="add_review_box">
+                                                    <h3 class="add_review_title">Add a review</h3>
+                                                    <div class="add_review_rating">
+                                                        <span>Rate this Product?</span>
+                                                        <a href="#"><i class="fa fa-star"></i></a>
+                                                        <a href="#"><i class="fa fa-star"></i></a>
+                                                        <a href="#"><i class="fa fa-star"></i></a>
+                                                        <a href="#"><i class="fa fa-star"></i></a>
+                                                        <a href="#" class="deactive"><i class="fa fa-star"></i></a>
+                                                    </div>
+                                                    <form class="add_review_form" method="POST"
+                                                        action="{{ route('review') }}">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="input-box">
+                                                                    <textarea name="description" placeholder="Write review" required=""></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="input-box">
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->name }}" name="name"
+                                                                        placeholder="Full name" required="">
+                                                                </div>
+                                                            </div>
+                                                            {{--  --}}
+                                                            <div class="col-md-6">
+                                                                <div class="input-box">
+                                                                    <input type="text" name="review"
+                                                                        placeholder="Full name" required>
+                                                                </div>
+                                                            </div>
+                                                            {{--  --}}
+                                                            <div class="col-md-6">
+                                                                <div class="input-box">
+                                                                    <input value="{{ Auth::user()->email }}"
+                                                                        type="email" name="email"
+                                                                        placeholder="Email address" required>
+                                                                    <input value="{{ $product->id }}" type="text"
+                                                                        name="product" placeholder="Email address" hidden>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-12">
+                                                                <div class="review_submit_btn">
+                                                                    <input value="Submit Review" type="submit"
+                                                                        class="thm-btn">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -239,79 +244,45 @@
                 }
               }
         }'>
-                <div>
-                    <div class="product-card__two">
-                        <div class="product-card__two-image">
-                            <span class="product-card__two-sale">sale</span>
-                            <img src="assets/images/products/product-2-1.jpg" alt="">
-                            <div class="product-card__two-image-content">
-                                <a href="#"><i class="organik-icon-visibility"></i></a>
-                                <a href="#"><i class="organik-icon-heart"></i></a>
-                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
-                            </div><!-- /.product-card__two-image-content -->
-                        </div><!-- /.product-card__two-image -->
-                        <div class="product-card__two-content">
-                            <h3><a href="product-details.html">Banana</a></h3>
-                            <div class="product-card__two-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div><!-- /.product-card__two-stars -->
-                            <p>$1.00</p>
+        @foreach ($relatedProducts as $product)
+            
+        <div>
+            <div class="product-card__two">
+                <div class="product-card__two-image">
+                    
+                    <img src="{{ asset("assets/images/products/product-2-1.jpg") }}" alt="">
+                    <div class="product-card__two-image-content">
+                        <a href={{ route('product_details', ['id' => $product->id]) }}><i class="organik-icon-visibility"></i></a>
+                                    <a href="{{ route('add', ['id' => $product->id]) }}"><i class="organik-icon-shopping-cart"></i></a>
+                    </div><!-- /.product-card__two-image-content -->
+                </div><!-- /.product-card__two-image -->
+                <div class="product-card__two-content">
+                    <h3><a href={{ route('product_details', ['id' => $product->id]) }}>{{ $product->name }}</a></h3>
+                    <div class="product-card__two-stars">
+                        @php
+                        $reviews = $product->review;
 
-                        </div><!-- /.product-card__two-content -->
-                    </div><!-- /.product-card__two -->
-                </div>
-                <div>
-                    <div class="product-card__two">
-                        <div class="product-card__two-image">
-                            <img src="assets/images/products/product-2-2.jpg" alt="">
-                            <div class="product-card__two-image-content">
-                                <a href="#"><i class="organik-icon-visibility"></i></a>
-                                <a href="#"><i class="organik-icon-heart"></i></a>
-                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
-                            </div><!-- /.product-card__two-image-content -->
-                        </div><!-- /.product-card__two-image -->
-                        <div class="product-card__two-content">
-                            <h3><a href="product-details.html"></a></h3>
-                            <div class="product-card__two-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div><!-- /.product-card__two-stars -->
-                            <p>$7.00</p>
 
-                        </div><!-- /.product-card__two-content -->
-                    </div><!-- /.product-card__two -->
-                </div>
-                <div>
-                    <div class="product-card__two">
-                        <div class="product-card__two-image">
-                            <img src="assets/images/products/product-2-3.jpg" alt="">
-                            <div class="product-card__two-image-content">
-                                <a href="#"><i class="organik-icon-visibility"></i></a>
-                                <a href="#"><i class="organik-icon-heart"></i></a>
-                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
-                            </div><!-- /.product-card__two-image-content -->
-                        </div><!-- /.product-card__two-image -->
-                        <div class="product-card__two-content">
-                            <h3><a href="product-details.html">Eggs</a></h3>
-                            <div class="product-card__two-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div><!-- /.product-card__two-stars -->
-                            <p>$3.00</p>
+$productRatings = $reviews->pluck('review')->toArray();
+$averageRating = count($productRatings) > 0 ? array_sum($productRatings) / count($productRatings) : 0;
+                    @endphp
+                         @for ($i = 1; $i <= 5; $i++)
+                                    
+                         @if ($i <= $averageRating)
+                             <i class="fa fa-star"></i>
+                         @else
+                         <i class="far fa-star"></i> 
+                         @endif
+                     </a>
+                 @endfor
+                    </div><!-- /.product-card__two-stars -->
+                    <p>${{ $product->price }}</p>
 
-                        </div><!-- /.product-card__two-content -->
-                    </div><!-- /.product-card__two -->
-                </div>
+                </div><!-- /.product-card__two-content -->
+            </div><!-- /.product-card__two -->
+        </div>
+        @endforeach
+
             </div>
         </div><!-- /.container -->
     </section><!-- /.product-two -->

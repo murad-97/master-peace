@@ -68,6 +68,10 @@ require __DIR__.'/auth.php';
 
 // prroduct page 
 Route::get('subcategories/{id?}', [ProductController::class, 'subcategories'])->name('subcategories');
-Route::post('search_products', [ProductController::class, 'search_products'])->name('search_products');
+Route::get('addproducts/{id?}', [ProductController::class, 'addproducts'])->name('add');
+Route::get('singleadd/{id?}', [ProductController::class, 'singleadd'])->name('singleadd');
+
+Route::post('price_products', [ProductController::class, 'price_products'])->name('price_products');
+Route::get('search_products', [ProductController::class, 'search_products'])->name('search_products');
 Route::get('product_details/{id?}', [ProductController::class, 'product_details'])->name('product_details');
 Route::post('review', [ProductController::class, 'review'])->name('review');

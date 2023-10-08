@@ -18,19 +18,34 @@ class ProductController extends Controller
      */
 
      public function product_details($id)
-     {
-        $product = Product::findOrFail($id);
-       // Assuming you have a relationship named 'reviews' in your Product model.
-$reviews = $product->review;
+{
+    $product = Product::findOrFail($id);
+    
+    // Assuming you have a relationship named 'reviews' in your Product model.
+    $reviews = $product->review;
 
-// Extract the rating values from the reviews.
-$productRatings = $reviews->pluck('review')->toArray();
-        $averageRating = count($productRatings) > 0 ? array_sum($productRatings) / count($productRatings) : 0;
+    // Extract the rating values from the reviews.
+    $productRatings = $reviews->pluck('review')->toArray();
+    $averageRating = count($productRatings) > 0 ? array_sum($productRatings) / count($productRatings) : 0;
+
+    // Retrieve three products with the same styleId
+    $relatedProducts = Product::where('styleId', $product->styleId)
+        ->where('id', '!=', $id) // Exclude the currently loaded product
+        ->take(3) // Limit to three products
+        ->get();
+
+    return view('pages.product-details', [
+        'product' => $product,
+        'averageRating' => $averageRating,
+        'productRatings' => $productRatings,
+        'relatedProducts' => $relatedProducts,
+    ]);
+}
 
 
-         return view('pages.product-details', ['product' => $product,"averageRating"=>$averageRating,"productRatings"=>$productRatings]);
-     }
-     public function search_products(Request $request, $id=null)
+
+
+     public function price_products(Request $request, $id=null)
      {
          $categories = Category::all();
          $query = Product::whereBetween('price', [$request->rangemin, $request->rangemax]);
@@ -43,6 +58,21 @@ $productRatings = $reviews->pluck('review')->toArray();
  
          return view('pages.products', ['products' => $products, 'categories' => $categories]);
      }
+     public function search_products(Request $request, $id=null)
+     {
+         $categories = Category::all();
+         $query = Product::where('name', 'like', '%' . $request->search . '%');;
+ 
+         if ($id!=null) {
+             $query->where('categoryId', $id);
+         }   
+ 
+         $products = $query->get();
+ 
+         return view('pages.products', ['products' => $products, 'categories' => $categories]);
+     }
+
+
     public function subcategories($id = null)
     {
         $query = Product::query();
@@ -66,6 +96,32 @@ $productRatings = $reviews->pluck('review')->toArray();
 "description"=>$request->description,
       ]);
       return redirect()->back();
+    }
+
+
+    public function addproducts($id)
+    {
+        
+
+            if (!session()->has('cart')) {
+                session(['cart' => []]);
+            }
+        
+            // Push $valueToAdd onto the session array
+            session()->push('cart', $id);
+            return redirect()->back();
+    }
+    public function singleadd($id)
+    {
+        
+
+            if (!session()->has('cart')) {
+                session(['cart' => []]);
+            }
+        
+            // Push $valueToAdd onto the session array
+            session()->push('cart', $id);
+            return redirect()->route("cart");
     }
     public function index()
     {
