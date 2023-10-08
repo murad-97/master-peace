@@ -21,8 +21,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-3">
                     <div class="product-sidebar">
                         <div class="product-sidebar__single product-sidebar__search-widget">
-                            <form action="#">
-                                <input type="text" placeholder="Search">
+                            <form action="{{ route("search_products") }}" method="get" >
+                                <input name="search" type="text" placeholder="Search">
                                 <button class="organik-icon-magnifying-glass" type="submit"></button>
                             </form>
                         </div><!-- /.product-sidebar__single -->
@@ -39,7 +39,7 @@
                             <h3>Price</h3>
                             <div class="product-sidebar__price-range">
                                 <div class="range-slider-price" id="range-slider-price"></div>
-                              <form method="POST" action="{{ route("search_products") }}">
+                              <form method="POST" action="{{ route("price_products") }}">
                                 @csrf
                                 <div class="form-group">
                                     <div class="left">
@@ -71,21 +71,32 @@
                             <div class="product-card__image">
                                 <img src="{{ asset("assets/images/products/product-1-1.jpg") }}" alt="">
                                 <div class="product-card__image-content">
-                                    <a href={{ route('product_details', ['id' => $product->id]) }}><i class="organik-icon-heart"></i></a>
-                                    <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                    <a href={{ route('product_details', ['id' => $product->id]) }}><i class="organik-icon-visibility"></i></a>
+                                    <a href="{{ route('add', ['id' => $product->id]) }}"><i class="organik-icon-shopping-cart"></i></a>
                                 </div><!-- /.product-card__image-content -->
                             </div><!-- /.product-card__image -->
                             <div class="product-card__content">
                                 <div class="product-card__left">
-                                    <h3><a href="product-details.html">{{ $product->name }}</a></h3>
+                                    <h3><a href={{ route('product_details', ['id' => $product->id]) }}>{{ $product->name }}</a></h3>
                                     <p>{{ $product->price }}</p>
                                 </div><!-- /.product-card__left -->
+                                @php
+                                    $reviews = $product->review;
+
+
+$productRatings = $reviews->pluck('review')->toArray();
+        $averageRating = count($productRatings) > 0 ? array_sum($productRatings) / count($productRatings) : 0;
+                                @endphp
                                 <div class="product-card__right">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                     @for ($i = 1; $i <= 5; $i++)
+                                    
+                                        @if ($i <= $averageRating)
+                                            <i class="fa fa-star"></i>
+                                        @else
+                                        <i class="far fa-star"></i> 
+                                        @endif
+                                    </a>
+                                @endfor
                                 </div><!-- /.product-card__right -->
                             </div><!-- /.product-card__content -->
                         </div><!-- /.product-card -->
