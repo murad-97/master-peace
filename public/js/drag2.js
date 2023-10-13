@@ -22,12 +22,12 @@ cards.forEach((element) => {
       image.src = element.childNodes[1].src;
       image.alt = '';
 
-    
-    
+
+
 
       // Append the image to the container
       container.appendChild(image);
-      
+
       let valueToAdd = element.getAttribute('value');
     console.log(valueToAdd);
       axios.post('/add-value-to-session-array', {
@@ -42,7 +42,7 @@ cards.forEach((element) => {
     });
       move()
     } else if (element.classList.contains("painting")) {
-      
+
       container.style = `background-image: url(${element.childNodes[1].src});`;
 
       let valueToAdd = element.getAttribute('value');
@@ -84,7 +84,7 @@ cards.forEach((element) => {
 
 
 function move() {
-  
+
     let elements = document.querySelectorAll(".element");
     elements.forEach((element) => {
       element.addEventListener("mousedown", (eo) => {

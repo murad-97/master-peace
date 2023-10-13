@@ -18,6 +18,12 @@
   position: absolute;
   bottom: 0;
 }
+.element::after{
+    content: "X";
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 /* .hello {
   height: 90vh;
@@ -76,7 +82,7 @@ menu:hover > menuitem {
 
 .listt {
   margin-top: 40px;
-  
+
 }
 
 .listt a {
@@ -161,19 +167,7 @@ h2 {
 
 
 
-.room img::after {
-  content: 'X';
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: red;
-  color: white;
-  border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}
+
 
 
 
@@ -191,7 +185,7 @@ h2 {
   height: 210px;
 
   /* sara */
-  
+
 }
 .card-body{
   padding-top: 0!important;
@@ -375,5 +369,13 @@ footer {
 * {
     transition: none;
   }
- 
-  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Change the color and opacity as desired */
+    pointer-events: none; /* This allows interaction with the image underneath */
+}
+

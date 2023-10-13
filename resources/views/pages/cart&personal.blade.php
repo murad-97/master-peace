@@ -42,6 +42,7 @@
                         </div>
                     @endif
                     <div>
+                   
                         <h4 class="total">DILIVARY</h3>
                             <h4 class="total">$40</h3>
                     </div>
