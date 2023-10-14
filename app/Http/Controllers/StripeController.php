@@ -76,15 +76,15 @@ return redirect()->away($response->url);
     return redirect()->back();
 }
 
-        
+
     }
 
     public function success()
     {
-      
+
         $productIds = session('cart'); // Your array of product IDs
         $productQuantities = [];
-        
+
         if (is_array($productIds) && count($productIds) > 0) {
             // Calculate product quantities by counting the occurrences of each product ID
             foreach ($productIds as $productId) {
@@ -98,9 +98,11 @@ return redirect()->away($response->url);
             }
             $products = Product::whereIn('id', array_keys($productQuantities))->get();
 $total = 0;
+$Qty=0;
             foreach($products as $product){
                     $product->quantity = $productQuantities[$product->id];
 $total += $product->price * $product->quantity;
+$Qty += $product->quantity;
             }
         }
         Payment::create([
@@ -115,7 +117,7 @@ $total += $product->price * $product->quantity;
             "userId" => Auth::user()->id,
             "paymentId" => Payment::where("userId", Auth::user()->id)->latest()->first()->id,
             "shipmentId" => Shipment::where("userId", Auth::user()->id)->latest()->first()->id,
-            "total" =>$total,
+            "total" =>$Qty,
         ]);
 
         foreach($products as $product){
@@ -124,7 +126,7 @@ $total += $product->price * $product->quantity;
                 "productId"=> $product->id,
                 "quantity"=> $product->quantity,
             ]);
-            
+
                         }
                         session()->forget('cart');
                         return redirect()->route("home.index");

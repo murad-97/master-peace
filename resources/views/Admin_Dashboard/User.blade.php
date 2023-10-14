@@ -14,8 +14,7 @@
                 <thead style="background-color: rgba(117, 192, 157, 0.489)">
                     <tr>
                         <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Image</th>
@@ -27,9 +26,8 @@
                     <tr>
                         <td>{{ $user['id'] }}</td>
                         <td>{{ $user['name'] }}</td>
-                        <td>{{ $user['LastName'] }}</td>
                         <td>{{ $user['email'] }}</td>
-                        <td>{{ $user['phone'] }}</td>
+                        <td>{{ $user['number'] }}</td>
                         <td>
                             <div>
                                 @if ($user->image)
@@ -39,25 +37,19 @@
                             </div>
                         </td>
                         <td>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <form action="userdelete/{{ $user['id'] }}" method="POST"
-                                        style="margin-bottom: 2px">
+
+
+                                    <form style="display: inline-block;" action="userdelete/{{ $user['id'] }}" method="POST"
+                                        >
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn  fa fa-trash text-danger fa-lg show_confirm"
-                                            type="submit" value="DELETE"></button>
+                                        <button style="height:40px" class="btn btn-danger" type="submit" value="DELETE" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </form>
-                                </div>
-                                {{-- <div class="col-md-6">
-                                    <form action="useredit/{{ $user['id'] }}" method=""
-                                        style="margin-bottom: 2px">
-                                        @csrf
-                                        <button class="btn fa-regular fa-pen-to-square text-warning fa-lg"
-                                            type="submit" value="Update"></button>
-                                    </form>
-                                </div> --}}
-                            </div>
+                                    <form  style="display: inline-block" action="useredit/{{ $user['id'] }}" method="get" style="margin-bottom: 2px">
+
+
+                                      <button style="height:40px" class="btn btn-primary" type="submit" value="Update">Edit</button>
+                                  </form>
                         </td>
                     </tr>
                     @endforeach

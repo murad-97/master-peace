@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Style;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StyleController extends Controller
 {
@@ -14,7 +16,8 @@ class StyleController extends Controller
      */
     public function index()
     {
-        //
+        $styles = Style::all();
+        return(view("Admin_Dashboard.Style",compact("styles")));
     }
 
     /**
@@ -24,7 +27,14 @@ class StyleController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        if ($categories->isEmpty()) {
+            Alert::error('You should add categories first', ' ');
+            return redirect()->back();
+        }
+
+        return view("Admin_Dashboard.Style_create", compact("categories"));
     }
 
     /**

@@ -13,29 +13,32 @@
                 <h4 class="card-title">Add New User</h4>
             </div>
             <div class="card-body">
-                <form action="/admin/Admins_User" method="POST" enctype="multipart/form-data">
+                <form action="/Admins_User" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="ProjectsName">Name</label>
-                        <input type="text" class="form-control" id="ProjectsName" name="name">
+                        <input type="text" class="form-control" id="ProjectsName" name="name" value="{{ old('name') }}">
                     </div>
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <div class="form-group">
-                        <label for="ProjectsBreif">Last Name</label>
-                        <input type="text" class="form-control" id="ProjectsBreif" name="LastName">
-                    </div>
-                    @error('LastName')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+
                     <div class="form-group">
                         <label for="DescriptionOne">Email</label>
-                        <input type="text" class="form-control" id="DescriptionOne" name="email">
+                        <input type="text" class="form-control" id="DescriptionOne" name="email" value="{{ old('email') }}">
                     </div>
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
+
+                    <div class="form-group">
+                        <label for="ProjectsLocation">Phone</label>
+                        <input type="text" class="form-control" id="ProjectsLocation" name="number" value="{{ old('number') }}">
+                    </div>
+                    @error('phone')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+
                     <div class="form-group">
                         <label for="DescriptionTwo">Password</label>
                         <input type="password" class="form-control" id="DescriptionTwo" name="password">
@@ -43,29 +46,28 @@
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
+
                     <div class="form-group">
-                        <label for="ProjectsLocation">Phone</label>
-                        <input type="text" class="form-control" id="ProjectsLocation" name="phone">
+                        <label for="DescriptionTwo">Confirm Password</label>
+                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                     </div>
-                    @error('phone')
+                    @error('password_confirmation')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    
-                    {{-- <div class="form-group">
-                        <label for="ProjectsImage">Image</label>
-                        <input type="file" class="form-control-file" id="ProjectsImage" name="image">
-                    </div> --}}
+
                     <div class="col-md-4 col-12">
                         <div class="form-group mt-3">
                             <label for="image">{{ __('Upload new image') }}</label>
-                            <input id="image" name="image" type="file" accept="image/*" class="form-control-file" autocomplete="image" />
-                            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+                            <input id="image" name="image" type="file" accept="image/*" class="form-control-file" autocomplete="image"  value="{{ old('image') }}"/>
+                            @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
-                    
-                    
-                    <button type="submit" class="btn btn-success btn-lg " style="margin-left:45%">Add User</button>
+
+                    <button type="submit" class="btn btn-success btn-lg" style="margin-left:45%">Add User</button>
                 </form>
+
             </div>
         </div>
     </div>  </div>
