@@ -12,16 +12,16 @@
             <div class="card-header" style="background-color: rgba(117, 192, 157, 0.489)">
                 <h4 class="card-title py-3" >Add New Project</h4>
             </div>
-            <div class="card-body">          
+            <div class="card-body">
               <form action="productupdate/{{ $product->id }}" method="POST">
               @csrf
-              @method('PATCH') 
-              
+              @method('PATCH')
+
 
                     <div class="form-group">
                         <label for="ProjectsName">Name</label>
                         <input type="text" class="form-control" id="ProjectsName" name="name"  value="{{ $product->name }}">
-                    </div>  
+                    </div>
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -60,12 +60,12 @@
                     @error('time')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                   
+
                     <div class="col-md-4 col-12">
                       @if ($product->img)
                           <img src="{{ asset('images/users/' . $product->img) }}" alt="{{ $product->name }}'s Project Picture" class="img-fluid" style="max-width: 200px; height: auto;" requ>
                       @endif
-      
+
                       <div class="form-group mt-3">
                           <label for="image">{{ __('Upload new image') }}</label>
                           <input id="image" name="image" type="file" accept="image/*" class="form-control-file" :value="old('image', $product->img)" autocomplete="image" />

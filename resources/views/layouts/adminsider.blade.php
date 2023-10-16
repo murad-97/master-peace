@@ -158,7 +158,7 @@
                     <a href="{{ route('Admin_Dashboard.Style') }}" class="nav-item nav-link {{ request()->routeIs('Admin_Dashboard.Projects') ? 'active' : '' }}">
                         <i class="fa fa-keyboard me-2"></i>Styles
                     </a>
-                    <a href="{{ route('Admin_Dashboard.Style') }}" class="nav-item nav-link {{ request()->routeIs('Admin_Dashboard.Projects') ? 'active' : '' }}">
+                    <a href="{{ route('Admin_Dashboard.product') }}" class="nav-item nav-link {{ request()->routeIs('Admin_Dashboard.Projects') ? 'active' : '' }}">
                         <i class="fa fa-keyboard me-2"></i>Products
                     </a>
                     <a href="{{ route('Admin_Dashboard.Style') }}" class="nav-item nav-link {{ request()->routeIs('Admin_Dashboard.Vaccept') ? 'active' : '' }}">

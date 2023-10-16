@@ -77,7 +77,7 @@ class UserController extends Controller
 
         Alert::success('Added Successfuly', ' ');
 
-        return redirect()->route('Admin_Dashboard.User');
+        return redirect()->route('Admin_Dashboard.User')->with('success', 'student data dashboard successfully ');
     }
 
     /**

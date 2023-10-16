@@ -82,8 +82,8 @@
                             <x-input-error class="mt-2" :messages="$errors->get('image')" />
                         </div>
                     </div>
-                    
-                    
+
+
                     <button type="submit" class="btn btn-success btn-lg " style="margin-left:45%">Add Project</button>
                 </form>
             </div>

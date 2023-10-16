@@ -45,7 +45,22 @@ class StyleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'regex:/^[A-Za-z\s]+$|^[\p{Arabic}\s]+$|^[\p{Hebrew}\s]+$/u', 'max:20'],
+            'category' => ['required', 'not_in:0'],
+        ], [
+            'category.not_in' => 'You Should Select category',
+        ]);
+
+
+        $style = new Style;
+        $style->name = $request->name;
+        $style->categoryId = $request->category;
+        $style->save();
+
+         Alert::success('Added Successfuly', ' ');
+
+        return redirect()->back();
     }
 
     /**

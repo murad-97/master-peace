@@ -13,18 +13,18 @@
                 <h4 class="card-title">Add New Style</h4>
             </div>
             <div class="card-body">
-                <form action="{{route("category.save")}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route("style_save")}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="ProjectsName">Category</label>
 
                         <select name="category" class="form-control" id="exampleFormControlSelect1">
-                            <option>select a category</option>
+                            <option value="0">select a category</option>
                             @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                           </select>
-                        @error('name')
+                        @error('category')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     </div>

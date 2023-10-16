@@ -13,7 +13,7 @@
                 <h4 class="card-title">Add New User</h4>
             </div>
             <div class="card-body">
-                <form action="/Admins_User" method="POST" enctype="multipart/form-data">
+                <form action="{{route("user_save")}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="ProjectsName">Name</label>

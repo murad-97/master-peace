@@ -20,7 +20,7 @@ class ProductController extends Controller
      public function product_details($id)
 {
     $product = Product::findOrFail($id);
-    
+
     // Assuming you have a relationship named 'reviews' in your Product model.
     $reviews = $product->review;
 
@@ -49,26 +49,26 @@ class ProductController extends Controller
      {
          $categories = Category::all();
          $query = Product::whereBetween('price', [$request->rangemin, $request->rangemax]);
- 
+
          if ($id!=null) {
              $query->where('categoryId', $id);
-         }   
- 
+         }
+
          $products = $query->get();
- 
+
          return view('pages.products', ['products' => $products, 'categories' => $categories]);
      }
      public function search_products(Request $request, $id=null)
      {
          $categories = Category::all();
          $query = Product::where('name', 'like', '%' . $request->search . '%');;
- 
+
          if ($id!=null) {
              $query->where('categoryId', $id);
-         }   
- 
+         }
+
          $products = $query->get();
- 
+
          return view('pages.products', ['products' => $products, 'categories' => $categories]);
      }
 
@@ -101,24 +101,24 @@ class ProductController extends Controller
 
     public function addproducts($id)
     {
-        
+
 
             if (!session()->has('cart')) {
                 session(['cart' => []]);
             }
-        
+
             // Push $valueToAdd onto the session array
             session()->push('cart', $id);
             return redirect()->back();
     }
     public function singleadd($id)
     {
-        
+
 
             if (!session()->has('cart')) {
                 session(['cart' => []]);
             }
-        
+
             // Push $valueToAdd onto the session array
             session()->push('cart', $id);
             return redirect()->route("cart");
@@ -157,8 +157,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $productList= Product::all();
+        return view("Admin_Dashboard.products",['products'=>$productList]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

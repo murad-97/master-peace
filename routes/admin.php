@@ -2,6 +2,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StyleController;
 use \Illuminate\Auth\Authenticatable;
 
@@ -55,6 +56,15 @@ Route::get('Category_Create', [CategoryController::class, 'create'])->name("Cate
 Route::patch('categoryedit/categoryupdate/{id}', [CategoryController::class, 'update']);
 
 
+// products data
+Route::get('/Admin_Product', [ProductController::class, 'show'])->name('Admin_Dashboard.product');
+Route::post('/Admin_Product', [ProductController::class, 'save'])->name("product.save");
+Route::delete('Productdelete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('Productedit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::get('Product_Create', [ProductController::class, 'create'])->name("product_Create");
+Route::patch('Productedit/prooductupdate/{id}', [ProductController::class, 'update']);
+
+
 // admins data
 Route::get('/Admins_Data', [AdminController::class, 'show'])->name('Admin_Dashboard.Admins_Data');
 Route::post('/Admins_Data', [AdminController::class, 'store']);
@@ -68,7 +78,7 @@ Route::get('Admin_Create', [AdminController::class, 'create'])->name("Admin_Crea
 
 // users data
 Route::get('/Admins_User', [UserController::class, 'show'])->name('Admin_Dashboard.User');
-Route::post('/Admins_User', [UserController::class, 'store']);
+Route::post('/Admins_User', [UserController::class, 'store'])->name("user_save");
 Route::delete('userdelete/{id}', [UserController::class, 'destroy'])->name('User.destroy');
 Route::get('useredit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::patch('useredit/userupdate/{id}', [UserController::class, 'update']);
@@ -77,7 +87,7 @@ Route::get('user_Create', [UserController::class, 'create']);
 
 // style data
 Route::get('/Admins_Style', [StyleController::class, 'index'])->name('Admin_Dashboard.Style');
-Route::post('/Admins_Style', [StyleController::class, 'store']);
+Route::post('/Admins_Style', [StyleController::class, 'store'])->name("style_save");
 Route::delete('styledelete/{id}', [StyleController::class, 'destroy'])->name('style.destroy');
 Route::get('styleedit/{id}', [StyleController::class, 'edit'])->name('style.edit');
 Route::patch('styleedit/styleupdate/{id}', [StyleController::class, 'update']);
